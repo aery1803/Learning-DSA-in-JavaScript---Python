@@ -19,18 +19,26 @@
 // 1. String
 // ==========================================
 console.log("--- 1. String ---");
-// basics:
+// Basics:
 let name = "John";
-let message = 'Hello';
-let template = `Welcome, ${name}`; // Template literal
+let singleQuote = 'Hello'; // Single quotes are also fine
+
+// Template Literals (Backticks) - allow embedded expressions
+let template = `Welcome, ${name}`;
 console.log(template);
+
+// Multiline Strings (using backticks)
+let multi = `This is a
+multiline string`;
+console.log(multi);
 
 // Advanced: Immutability
 let str = "Hello";
 // str[0] = "h"; // This does nothing (in strict mode, it might throw error)
 console.log(str); // Output: "Hello"
 // However, the variable can be reassigned
-str = "World"; 
+str = "World";
+console.log(str); // Output: "World"
 
 // ==========================================
 // 2. Number
@@ -55,6 +63,11 @@ console.log(0.1 + 0.2 === 0.3); // false
 // range
 console.log(Number.MAX_SAFE_INTEGER); // 2^53 - 1
 
+// Binary, Octal, Hex representations
+console.log(0b1010); // Binary (10)
+console.log(0o12);   // Octal (10)
+console.log(0xA);    // Hex (10)
+
 // ==========================================
 // 3. BigInt
 // ==========================================
@@ -62,6 +75,7 @@ console.log("\n--- 3. BigInt ---");
 // Created by appending 'n' to the end of an integer
 // Used for numbers larger than Number.MAX_SAFE_INTEGER
 // let bigNumber = 1234567890123456789012345678901234567890n; // Syntax depends on environment support
+console.log(0n);     // BigInt (0)
 let anotherBig = BigInt("1234567890123456789012345678901234567890");
 
 console.log(anotherBig);
@@ -76,7 +90,7 @@ let isActive = true;
 let isDeleted = false;
 
 // Advanced: Truthy and Falsy values
-// Falsy values: false, 0, -0, 0n, "", null, undefined, NaN
+// Falsy values: false, 0, -0, 0.0, 0n, "", null, undefined, NaN
 if (0) {
     console.log("This won't run");
 } else {
@@ -106,8 +120,8 @@ console.log(typeof null); // "object" (This is a historical bug in JS)
 // Difference between null and undefined
 // undefined means a variable has been declared but has not yet been assigned a value
 // null is an assignment value. It can be assigned to a variable as a representation of no value
-console.log(null === undefined); // false
 console.log(null == undefined); // true
+console.log(null === undefined); // false
 
 // ==========================================
 // 7. Symbol

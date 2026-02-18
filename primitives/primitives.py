@@ -30,6 +30,7 @@ big_num = 123456789012345678901234567890 * 1234567890
 print(f"Big Number: {big_num}")
 
 # Division behavior
+# print(10 / 0)  # ZeroDivisionError: division by zero
 print(10 / 3)  # 3.3333... (float division)
 print(10 // 3) # 3 (floor division)
 
@@ -64,18 +65,21 @@ print(inf > 1000000000) # True
 print("\n--- 3. String ---")
 # Basics:
 name = "John"
-single_quote = 'John'
-# Advanced: Multiline
+single_quote = 'Hello' # Single quotes are same as double quotes in Python
+
+# Multiline Strings (using triple quotes)
 multi = """This is a
 multiline string"""
+print(multi)
 
-# Immutability
+# Advanced: Immutability
 s = "hello"
 # s[0] = 'H' # TypeError: 'str' object does not support item assignment
 s = "Hello" # Reassignment is fine
+print(s)
 
 # Formatting (f-strings - Python 3.6+)
-print(f"Name: {name}, Age: {age}")
+print(f"Name: {name}, Age: {age}") # Moved to template example above
 
 # Raw Strings (useful for regex/paths)
 path = r"C:\Users\Name" 
@@ -85,6 +89,7 @@ print(path)
 text = "Python Programming"
 print(text[0:6])   # 'Python'
 print(text[::-1])  # 'gnimmargorP nohtyP' (Reverse)
+print(text[::2])  # 'Pto rgamn' (Every 2nd character)
 
 # ==========================================
 # 4. Boolean (bool)
@@ -128,3 +133,22 @@ print("\n--- 6. Complex ---")
 z = 2 + 3j
 print(z.real) # 2.0
 print(z.imag) # 3.0
+
+# ==========================================
+# 7. Decimal Module
+# ==========================================
+print("\n--- 7. Decimal Module ---")
+from decimal import Decimal, getcontext
+
+# Why use Decimal?
+# Standard floats have precision issues:
+print(f"Float: {0.1 + 0.2}") # 0.30000000000000004
+
+# Decimal fixes this (IMPORTANT: pass values as strings to avoid float conversion errors first)
+d1 = Decimal('0.1')
+d2 = Decimal('0.2')
+print(f"Decimal: {d1 + d2}") # 0.3
+
+# Controlling Precision
+getcontext().prec = 6
+print(Decimal('1') / Decimal('7')) # 0.142857
